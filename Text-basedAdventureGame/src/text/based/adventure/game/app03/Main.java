@@ -1,4 +1,4 @@
-package text.based.adventure.game;
+package text.based.adventure.game.app03;
 
 import java.util.Random;
 import java.util.Scanner;
