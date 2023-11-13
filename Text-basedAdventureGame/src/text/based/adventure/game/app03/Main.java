@@ -14,11 +14,11 @@ public class Main {
 			int enemyAttackDamage = 25;
 			int plHealth = 100;
 			int plAttack = 50;
-			int numOfHealthPotions = 3;
+			int upgradeHealPercentage = rand.nextInt(30,50);
 			int healPotionsHealAmt = 3;
 			int healPotionsDropChan = 50;
 			boolean running = true;
-			System.out.println("Welcome to the Dungeon!");
+			System.out.println("Welcome to the MyGame!");
 
 			GAME: while (running) {
 				System.out.println("-----------------------------------------");
@@ -46,12 +46,13 @@ public class Main {
 							break;
 						}
 					} else if (input.equals("2")) {
-						if (numOfHealthPotions > 0) {
-							plHealth += healPotionsHealAmt;
-							numOfHealthPotions -= 1;
+						if (healPotionsHealAmt > 0) {
+							plHealth += upgradeHealPercentage;
+							healPotionsHealAmt -= 1;
 							System.out.println("\t-> You drink health potion, healing yourself for "
-									+ healPotionsHealAmt + "." + "\n\t-> You now have " + plHealth + " HP."
-									+ "\n\t-> You now have " + numOfHealthPotions + "health pitons left.\n");
+									+ upgradeHealPercentage + "." + "\n\t-> You now have " + plHealth + " HP."
+									+ "\n\t-> You now have " + healPotionsHealAmt + " health pitons left.\n");
+							upgradeHealPercentage = rand.nextInt(30,50);
 						} else {
 							System.out.println(
 									"\t-> You do not have any health potions left!\n\t-> Defeat enemies for a chance get one !");
@@ -66,7 +67,7 @@ public class Main {
 				}
 
 				if (plHealth < 1) {
-					System.out.println("\t-> You limp out of the Dungeon, weak from battle");
+					System.out.println("\t-> You limp out of the MyGame, weak from battle");
 					break;
 				}
 				System.out.println("-----------------------------------------");

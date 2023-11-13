@@ -10,7 +10,7 @@ public class ATM {
 
 		Bank theBank = new Bank("Bank Pekao");
 
-		User aUser = theBank.addUser("John", "Doe", "1234");
+		User aUser = theBank.addUser("Adkam", "Salaydinov", "1234");
 
 		Account newAccount = new Account("Checkin", aUser, theBank);
 		aUser.addAccount(newAccount);

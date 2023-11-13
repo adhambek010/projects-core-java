@@ -6,10 +6,25 @@ import java.util.ArrayList;
 
 @SuppressWarnings("unused")
 public class User {
+	/**
+	 * First name of the user
+	 */
 	private String fName;
+	/**
+	 * Last name of the user
+	 */
 	private String lName;
+	/*
+	 * Unique ID of the user
+	 */
 	private String uuID;
+	/**
+	 * The MD5 hash of the user's pin number  
+	 */
 	private byte[] pinHash;
+	/**
+	 * List of accounts for this user
+	 */
 	private ArrayList<Account> accounts;
 
 	/**

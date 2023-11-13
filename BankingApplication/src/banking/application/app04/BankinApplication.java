@@ -10,8 +10,8 @@ public class BankinApplication {
 			String fName = sc.nextLine();
 			System.out.print("Enter your second name : ");
 			String sName = sc.nextLine();
-			System.out.println("Enter your user ID : ");
-			String eID = sc.nextLine();
+			System.out.print("Enter your user ID : ");
+			final int eID = sc.nextInt();
 
 			BankAccount acc = new BankAccount(fName, sName, eID);
 			acc.showMenu();

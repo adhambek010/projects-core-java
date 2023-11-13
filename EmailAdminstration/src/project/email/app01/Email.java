@@ -10,20 +10,20 @@ public class Email {
 	private String department;
 	private int passwordLength;
 	private String companySuffix;
-	Scanner sc = new Scanner(System.in);
+	private Scanner sc = new Scanner(System.in);
 
 	public Email(String firstName, String lastName, int passwordLength, String companySuffix) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.passwordLength = passwordLength;
 		this.companySuffix = companySuffix;
-		this.department = setDepartment();
+		this.department = setDepartment(this.sc);
 		this.password = setPassword(passwordLength);
-		this.email = this.firstName.toLowerCase() + this.lastName.toLowerCase() + "@" + this.department 
+		this.email = this.firstName.toLowerCase() + this.lastName.toLowerCase() + "@" + this.department
 				+ this.companySuffix + ".com";
 	}
 
-	protected String setDepartment() {
+	protected String setDepartment(Scanner sc) {
 		System.out.print(
 				"\nCodes for department\n--------------------\nFor Sales : 1\nFor Development : 2\nFor Accounting : 3\nEnter the department code --> ");
 
@@ -51,7 +51,7 @@ public class Email {
 		return password;
 	}
 
-	public void printAllData() {
+	public void printAllData(Scanner sc) {
 
 		System.out.println("\nEmail creation is Succes!");
 		System.out.println("--------------------------");
@@ -60,25 +60,29 @@ public class Email {
 		System.out.println("Your department is   : " + this.department);
 		System.out.println("Your generated email is   : " + this.email);
 		System.out.print("Your generated password   : ");
-		for(char c : this.password) {
+		for (char c : this.password) {
 			System.out.print(c);
 		}
 		System.out.println();
 		System.out.println("Never share this password");
+		passwordMenu(sc);
+
+	}
+
+	private void passwordMenu(Scanner sc) {
 		System.out.println(
-				"\nDo you yant change your password\nChange password : 1\nRegenerate password : 2\nNone of them : 0 --> ");
+				"\nDo you yant change your password\nChange password : 1\nRegenerate password : 2\nNone of them & Exit: 0 --> ");
 		int choise = sc.nextInt();
 		if (choise == 1) {
-			changePassword();
+			changePassword(sc);
 		} else if (choise == 2) {
 			regeneratePassword();
 		} else {
 			System.out.println("Thank you visit again!!!");
 		}
-
 	}
 
-	public void changePassword() {
+	private void changePassword(Scanner sc) {
 		char[] password = new char[passwordLength];
 		System.out.println();
 		for (int i = 0; i < passwordLength; i++) {
@@ -88,21 +92,23 @@ public class Email {
 		}
 		this.password = password;
 		System.out.print("Your new password is : ");
-		for(char c : password) {
+		for (char c : password) {
 			System.out.print(c);
 		}
 		System.out.println();
-		System.out.println("Thank you visit again!!!");
+		passwordMenu(sc);
+
 	}
 
-	public void regeneratePassword() {
+	private void regeneratePassword() {
 		this.password = setPassword(passwordLength);
 		System.out.print("Your new password is : ");
-		for(char c : this.password) {
+		for (char c : this.password) {
 			System.out.print(c);
 		}
 		System.out.println();
-		System.out.println("Thank you visit again!!!");
+		passwordMenu(this.sc);
+
 	}
 
 }

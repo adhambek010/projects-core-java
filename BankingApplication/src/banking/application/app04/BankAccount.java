@@ -6,54 +6,56 @@ public class BankAccount {
 
 	private int balance;
 	private int prevTranasction;
-	private String custFirstName;
-	private String custSecondName;
-	private String custID;
+	private String custFName;
+	private String custSName;
+	private final int custID;
 
-	public BankAccount(String custFirstName, String custSecondName, String custID) {
-		this.custFirstName = custFirstName;
-		this.custSecondName = custSecondName;
+	public BankAccount(String custFirstName, String custSecondName, int custID) {
+		this.custFName = custFirstName;
+		this.custSName = custSecondName;
 		this.custID = custID;
 	}
 
-	public void deposit(int amt) {
+	private void deposit(int amt) {
 		if (amt != 0) {
 			balance += amt;
 			prevTranasction = amt;
 		}
+		System.out.printf("\nYou deposited %s$ \n\n", amt);
 	}
 
-	public void withdraw(int amt) {
+	private void withdraw(int amt) {
 		if (amt != 0) {
 			balance -= amt;
 			prevTranasction = -amt;
 		}
+		System.out.printf("\nYou eithdrawn %s$ \n\n", amt);
 	}
 
-	public void getPrivousTrx() {
+	private void getPrivousTrx() {
 		if (prevTranasction > 0) {
-			System.out.println("Deposited : " + prevTranasction);
+			System.out.printf("Deposited : %s$\n", prevTranasction);
 		} else if (prevTranasction < 0) {
-			System.out.println("Wthdrawn : " + Math.abs(prevTranasction));
+			System.out.printf("Wthdrawn : %s$", Math.abs(prevTranasction));
 		} else {
 			System.out.println("No transaction occured");
 		}
 	}
 
-	public void showMenu() {
+	protected void showMenu() {
 		int option;
 
-		System.out.println("Welcome " + custFirstName + " " + custSecondName);
-		System.out.println("Your ID is " + custID + "\n\n");
+		System.out.printf("\nWelcome %s %s\t", custFName, custSName);
+		System.out.printf("\nYour ID is %s \n\n", custID);
 		do {
 			System.out.println("1. Check Balance : ");
 			System.out.println("2. Deposit  : ");
 			System.out.println("3. Withdraw : ");
 			System.out.println("4. Previous transaction :");
 			System.out.println("0. Exit :");
-			System.out.println("===========================");
+			System.out.println("==========================");
 			System.out.println("Enter your option");
-			System.out.println("===========================");
+			System.out.println("==========================");
 			option = input();
 			switch (option) {
 			case 0:
@@ -78,7 +80,7 @@ public class BankAccount {
 				System.out.println("Enter the amount to withdraw :");
 				System.out.println("---------------------------\n\n");
 				int amt2 = input();
-				if (amt2 < balance) {
+				if (amt2 <= balance) {
 					withdraw(amt2);
 					break;
 				} else {
@@ -105,9 +107,9 @@ public class BankAccount {
 		System.out.println("Thank you for using our services!!!\nCome back soon!!!");
 	}
 
-	private int input() {
+	@SuppressWarnings("resource")
+	private static int input() {
 		try {
-			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(System.in);
 			System.out.print("Your choise here : ");
 			int option = sc.nextInt();
