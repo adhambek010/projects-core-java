@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/../SandEmailWithJava/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../SandEmailWithJava/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../SandEmailWithJava/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +63,7 @@
       <updated>1699882597026</updated>
       <workItem from="1699882598013" duration="1809000" />
       <workItem from="1699884567849" duration="14000" />
+      <workItem from="1699884819237" duration="37000" />
     </task>
     <servers />
   </component>
